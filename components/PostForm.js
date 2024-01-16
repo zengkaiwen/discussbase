@@ -83,7 +83,7 @@ export default function Form({slug}) {
     return (
             <Layout>
             <Head>
-                <title>Post discuss</title>
+                <title>帖子</title>
             </Head>
 
             <h1 className='is-size-3 mb-2'>{post != null ? '编辑' : '创建'}帖子</h1>
