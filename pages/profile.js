@@ -56,18 +56,18 @@ export default function Profile() {
 
             //temporary validation
             if (username == null) {
-                alert('username min 4 and max 12 characters')
+                alert('昵称必填')
                 return
             }
-            if (username.trim().length < 4 || username.trim().length > 12) {
-                alert('username min 4 and max 12 characters')
+            if (username.trim().length < 1 || username.trim().length > 16) {
+                alert('昵称不能少于1个字或多于16个字')
                 return
             }
-            var expr = /^[a-zA-Z0-9_]{4,12}$/;
-            if (!expr.test(username)) {
-                alert('Only Character, number and _ allowed')
-                return
-            }
+            // var expr = /^[a-zA-Z0-9_]{4,12}$/;
+            // if (!expr.test(username)) {
+            //     alert('Only Character, number and _ allowed')
+            //     return
+            // }
 
             const updates = {
                 id: user.id,
@@ -83,12 +83,14 @@ export default function Profile() {
 
             if (error) {
                 throw error
+            } else {
+                window.location.href = '/posts'
             }
         } catch (error) {
             if (error.message.includes('duplicate key value'))
-                alert('username is alredy exists, pick another one')
+                alert('昵称已存在')
             else if (error.message.includes('username'))
-                alert("username can't be empty")
+                alert("昵称不能为空")
             else
                 alert(error.message)
         } finally {
@@ -104,7 +106,7 @@ export default function Profile() {
             {error &&
                 <div className='notification'>
                     <h3><b> Oops </b></h3>
-                    看起来您还没有任何个人资料。添加您的昵称
+                    看起来您还没有任何个人资料。请添加您的昵称
                 </div>
             }
 
