@@ -6,18 +6,14 @@ export default function Home() {
 
   return (
     <Layout>
-        <h1 className='is-size-2 is-size-4-mobile'>Discussbase</h1>
-        <h2 className='is-size-4 mb-5'>An open-source forum <br></br>
-          Create your discussion platform and deploy it completely free,
-        Using &ldquo;Seven-stack&rdquo; (Supabase, Vercel and Next.js).
-        Simplicity first. Focus on your discussion
-      </h2>
+        <h1 className='is-size-2 is-size-4-mobile'>Hi,</h1>
+        <h2 className='is-size-4 mb-5'>各位小伙伴<br />在这里畅所欲言吧</h2>
 
       <div>
-        <Link href='/posts'><button className="button is-outlined mr-1">Try It</button></Link>
-        <Link href='https://docs-discussbase.vercel.app/'><button className="button is-outlined">Read Documentation</button></Link>
+        <Link href='/posts'><button className="button is-outlined mr-1">Start</button></Link>
+        {/* <Link href='https://docs-discussbase.vercel.app/'><button className="button is-outlined">Read Documentation</button></Link> */}
       </div>
-
+{/* 
         <div className='columns mt-6'>
           <div className='column'>
             <figure className='image is-64x64'>
@@ -45,7 +41,7 @@ export default function Home() {
         </div>
 
       <a className="github-button" href="https://github.com/hilmanski/discussbase" data-color-scheme="no-preference: dark; light: dark; dark: dark_dimmed;" data-size="large" data-show-count="true" aria-label="Star hilmanski/discussbase on GitHub">Star on Github</a>
-      <script async defer src="https://buttons.github.io/buttons.js"></script>
+      <script async defer src="https://buttons.github.io/buttons.js"></script> */}
     </Layout>
   )
 }

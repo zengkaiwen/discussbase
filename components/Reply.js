@@ -179,9 +179,9 @@ export default function Reply({post_id, replies}) {
                     <div>
                     <textarea
                         className="textarea mb-1"
-                        placeholder="your reply..."
-                        {...register('body', { required: 'Subject is required',
-                            minLength: { value: 10, message: 'minimal 10 characters'}})}></textarea>
+                        placeholder="你的评论..."
+                        {...register('body', { required: '内容必填',
+                            minLength: { value: 2, message: '最少 2 个字'}})}></textarea>
                         {errors.body && (
                             <span role="alert" className="has-text-danger">
                                 {errors.body.message}
@@ -190,10 +190,10 @@ export default function Reply({post_id, replies}) {
 
                     {editMode 
                         ? <> 
-                            <button type="submit" className="button is-primary"> Update </button> &nbsp;
-                            <button onClick={cancelEditMode} className="button has-background-danger has-text-white"> Cancel </button>
+                            <button type="submit" className="button is-primary"> 更新 </button> &nbsp;
+                            <button onClick={cancelEditMode} className="button has-background-danger has-text-white"> 取消 </button>
                         </>
-                        : <button type="submit" className="button is-primary is-fullwidth"> Reply </button>
+                        : <button type="submit" className="button is-primary is-fullwidth"> 评论 </button>
                     }
                 </form>
             }
@@ -219,12 +219,12 @@ export default function Reply({post_id, replies}) {
                                     <ReactMarkdown>{reply.body}</ReactMarkdown>
                                     </p>
                                 <small className='has-text-grey'><Link href={'/user/' + reply.commenter.username}><a className='has-text-grey'>@{reply.commenter.username} </a></Link>
-                                replied <TimeAgo date={reply.created_at} /> </small>
+                                评论 <TimeAgo date={reply.created_at} /> </small>
 
                                 {commentOwner &&
                                     <div>
-                                        <a onClick={editComment} data-index={index}>Edit</a> &nbsp;
-                                        <a onClick={confirmDelete} data-index={index}>Delete</a>
+                                        <a onClick={editComment} data-index={index}>编辑</a> &nbsp;
+                                        <a onClick={confirmDelete} data-index={index}>删除</a>
                                     </div>
                                 }
                             </div>

@@ -10,7 +10,7 @@ export default function AvatarForm({ username, avatar_url, onUpload }) {
             setUploading(true)
 
             if (!event.target.files || event.target.files.length === 0) {
-                throw new Error('You must select an image to upload.')
+                throw new Error('你必须选择一张图片上传.')
             }
 
             const file = event.target.files[0]
@@ -23,7 +23,7 @@ export default function AvatarForm({ username, avatar_url, onUpload }) {
             fileSize = fileSize.toFixed(2);
             console.log(fileSize)
             if (fileSize > 2) {
-                alert('to big, maximum is 2MiB. You file size is: ' + fileSize + ' MiB');
+                alert('图片最大2M. 你的文件已经有: ' + fileSize + ' M');
                 return
             }
 
@@ -47,13 +47,13 @@ export default function AvatarForm({ username, avatar_url, onUpload }) {
     return (
         <div>
             <div className="field">
-            <label className="label">Avatar</label>
+            <label className="label">头像</label>
             <Avatar username={username} avatar_url={avatar_url} />
             </div>
 
             <div>
                 <label className="button is-small primary block" htmlFor="single">
-                    {uploading ? 'Uploading ...' : 'Upload'}
+                    {uploading ? '上传中 ...' : '上传'}
                 </label>
                 <input
                     style={{

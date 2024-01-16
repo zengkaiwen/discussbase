@@ -18,7 +18,7 @@ export default function Layout({ children }) {
     return (
         <>
             <Head>
-                <title>Discuss-OS Supabase</title>
+                <title>Discuss</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
@@ -38,7 +38,7 @@ export default function Layout({ children }) {
                                     <line x1="9.09985" y1="22.1805" x2="40.0716" y2="20.8585" stroke="black" />
                                 </svg>
 
-                                <h1 className='is-size-5 ml-1'>Discussbase</h1>
+                                <h1 className='is-size-5 ml-1'>Discuss</h1>
                             </a>
                         </Link>
 
@@ -61,20 +61,20 @@ export default function Layout({ children }) {
                     <div id='navbarTarget' className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
                         <div className="navbar-end">
                             <Link href="/posts">
-                                <a className={'navbar-item'}>Forum</a>
+                                <a className={'navbar-item'}>论坛</a>
                             </Link>
 
 
                             {session
                                 ? <>
-                                    <Link href="/posts/create"><a className={'navbar-item'}>New+</a></Link>
-                                    <Link href='/profile'><a className="navbar-item"> Profile </a></Link>
+                                    <Link href="/posts/create"><a className={'navbar-item'}> 发帖 </a></Link>
+                                    <Link href='/profile'><a className="navbar-item"> 个人信息 </a></Link>
                                     <a className="navbar-item" onClick={() => {
                                         supabase.auth.signOut()
                                         router.push('/')
-                                    }}> Log Out </a>
+                                    }}> 退出 </a>
                                 </>
-                                : <Link href='/login'><a className={'navbar-item'}>Login</a></Link>
+                                : <Link href='/login'><a className={'navbar-item'}>登录</a></Link>
                             }
                         </div>
                     </div>

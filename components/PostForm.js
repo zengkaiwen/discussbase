@@ -21,7 +21,7 @@ export default function Form({slug}) {
 
             const profileExists = await isProfileExists()
             if (!profileExists) {
-                alert('Create username first')
+                alert('请先去登录或去个人信息页面创建昵称')
                 window.location.href = '/login'
             }
         })();
@@ -86,17 +86,17 @@ export default function Form({slug}) {
                 <title>Post discuss</title>
             </Head>
 
-            <h1 className='is-size-3 mb-2'>Create/Edit Post</h1>
+            <h1 className='is-size-3 mb-2'>{post != null ? '编辑' : '创建'}帖子</h1>
             <form onSubmit={onSubmit}>
                 <div className='fields mb-4'>
-                    <label className='label'>Title</label>
+                    <label className='label'>标题</label>
                     <input
                         className='input'
                         type="text"
-                        placeholder="your post title"
+                        placeholder="帖子标题"
                         defaultValue={post != null ? post.title : ''}
-                        {...register('title', { required: 'Title is required', 
-                            minLength: { value: 10, message: 'minimal 10 characters'}})}
+                        {...register('title', { required: '标题必填', 
+                            minLength: { value: 2, message: '最少 2 个字'}})}
                     />
                     {errors.title && (
                         <span role="alert" className="has-text-danger">
@@ -106,13 +106,13 @@ export default function Form({slug}) {
                 </div>
 
                 <div className='fields mb-4'>
-                    <label className='label'>Subject</label>
+                    <label className='label'>内容</label>
                     <textarea
                         className='textarea'
-                        placeholder="I'm going to ask about ..."
+                        placeholder="我想说或询问的内容 ..."
                         defaultValue={post != null ? post.body : ''}
-                        {...register('body', { required: 'Subject is required', 
-                            minLength: { value: 20, message: 'minimal 20 characters'}})}
+                        {...register('body', { required: '内容必填', 
+                            minLength: { value: 10, message: '最少 10 个字'}})}
                     >
                     </textarea>
                     {errors.body && (
@@ -123,9 +123,9 @@ export default function Form({slug}) {
                 </div>
 
                 <div className='fields mb-4'>
-                    <label className='label'>Category</label>
+                    <label className='label'>分类</label>
                     <div className='select'>
-                    <select {...register("tag", { required: 'Subject is required'})}>
+                    <select {...register("tag", { required: '分类必填'})}>
                         {categories.map((cat, index) => (
                             <option key={index} value={cat.key}>{cat.name} - {cat.desc} </option>
                         ))}
@@ -140,7 +140,7 @@ export default function Form({slug}) {
 
                 <div className="submit mt-5">
                     <button type="submit" className="button is-fullwidth is-primary">
-                        {post != null ? 'Update' : 'Submit'}
+                        {post != null ? '更新' : '提交'}
                     </button>
                 </div>
             </form>

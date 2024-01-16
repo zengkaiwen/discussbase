@@ -99,24 +99,24 @@ export default function Profile() {
     return (
         <Layout>
         <div className="form-widget">
-            <h1 className='is-size-2 mb-5'>Update Profile</h1>
+            <h1 className='is-size-2 mb-5'>更新个人信息</h1>
 
             {error &&
                 <div className='notification'>
                     <h3><b> Oops </b></h3>
-                    Looks like you don&apos;t have any profile yet. Add your username
+                    看起来您还没有任何个人资料。添加您的昵称
                 </div>
             }
 
             <div className="field">
-                <label className="label" htmlFor="email">Email</label>
+                <label className="label" htmlFor="email">邮箱</label>
                 <div className="control">
                     <input id="email" className="input" type="text" value={user.email} disabled />
                 </div>
             </div>
 
             <div className="field">
-                <label className="label" htmlFor="username">Username</label>
+                <label className="label" htmlFor="username">昵称</label>
                 <div className="control">
                     <input id="username"
                         className="input"
@@ -126,7 +126,7 @@ export default function Profile() {
                 </div>
             </div>
 
-            <div className="field">
+            {/* <div className="field">
                 <label className="label" htmlFor="website">Website</label>
                 <div className="control">
                     <input id="website"
@@ -135,7 +135,7 @@ export default function Profile() {
                         value={website || ''}
                         onChange={(e) => setWebsite(e.target.value)} />
                 </div>
-            </div>
+            </div> */}
 
             <AvatarForm
                 username={username}
@@ -152,7 +152,7 @@ export default function Profile() {
                     onClick={() => updateProfile({ username, website, avatar_url })}
                     disabled={loading}
                 >
-                    {loading ? 'Loading ...' : 'Update'}
+                    {loading ? '加载中 ...' : '更新'}
                 </button>
             </div>
         </div>

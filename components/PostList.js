@@ -26,17 +26,17 @@ export default function PostList({ posts, totalPosts, tag = null }) {
             </Head>
             <div>
                 <section className="my-5">
-                    <h1 className="title">Post {category && category.name}</h1>
+                    <h1 className="title">帖子 {category && category.name}</h1>
                     <h2 className="subtitle">
-                        {category ? category.desc : 'Everything in this forum' }
+                        {category ? category.desc : '所有内容' }
                     </h2>
                 </section>
 
                 <div className="columns is-mobile">
                     <div className="column is-hidden-mobile is-3">
-                        <p className="is-size-5"> Categories </p>
+                        <p className="is-size-5"> 分类 </p>
                         <Link href='/posts'>
-                            <a className="is-block py-1">All</a>
+                            <a className="is-block py-1">所有</a>
                         </Link>
                         {categories.map((cat, index) => (
                             <Link key={index} href={'/posts/tag/'+ cat.key}>
@@ -49,10 +49,10 @@ export default function PostList({ posts, totalPosts, tag = null }) {
 
                         <form className='columns is-mobile' action='/posts/search' method ='GET'>
                             <div className='column'>
-                                <input className='input is-small' placeholder='type keyword..' type='search' name='query'/>
+                                <input className='input is-small' placeholder='输入关键字' type='search' name='query'/>
                             </div>
                             <div className='column is-3'>
-                                <button className='button is-fullwidth is-small'>Search</button>
+                                <button className='button is-fullwidth is-small'>搜索</button>
                             </div>
                         </form>
 
@@ -71,8 +71,8 @@ export default function PostList({ posts, totalPosts, tag = null }) {
                                     <Link href={'/user/' + post.owner.username}> 
                                             <a className='has-text-grey'>@{post.owner.username} </a>
                                     </Link>
-                                    posted <TimeAgo date={post.created_at} />
-                                    | {post.replies.length} comments
+                                    距发帖 <TimeAgo date={post.created_at} />
+                                    | {post.replies.length} 评论
                                     </small> </p>
                                 </div>
                             </div>
