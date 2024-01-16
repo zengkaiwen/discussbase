@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link';
 import { supabase } from '../utils/supabaseClient'
 
 const NameMap = {
@@ -27,7 +28,7 @@ export default function Auth(props) {
     const handleResiger = async () => {
         try {
             setLoading(true)
-            const { error } = await supabase.auth.signIn({ email, password })
+            const { error } = await supabase.auth.signUp({ email, password })
             if (error) throw error
         } catch (error) {
             alert(error.error_description || error.message)
@@ -54,7 +55,7 @@ export default function Auth(props) {
 
 
             <div>
-                <p className="is-size-5 mb-1">邮件登录（注册）</p>
+                <p className="is-size-5 mb-1">邮件{NameMap[type]}</p>
                 <div>
                     <input
                         className="input mb-2"
