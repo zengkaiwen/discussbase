@@ -1,16 +1,34 @@
 import { useState } from 'react'
 import { supabase } from '../utils/supabaseClient'
 
-export default function Auth() {
+const NameMap = {
+    'login': '登录',
+    'register': '注册'
+}
+
+export default function Auth(props) {
+    const { type } = props;
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const handleLogin = async (email) => {
+    const handleLogin = async () => {
         try {
             setLoading(true)
-            const { error } = await supabase.auth.signIn({ email })
+            const { error } = await supabase.auth.signIn({ email, password })
             if (error) throw error
-            alert('查看电子邮件中的登录链接！如果收件箱中没有，请查看垃圾邮件文件夹。')
+        } catch (error) {
+            alert(error.error_description || error.message)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const handleResiger = async () => {
+        try {
+            setLoading(true)
+            const { error } = await supabase.auth.signIn({ email, password })
+            if (error) throw error
         } catch (error) {
             alert(error.error_description || error.message)
         } finally {
@@ -41,22 +59,42 @@ export default function Auth() {
                     <input
                         className="input mb-2"
                         type="email"
-                        placeholder="Your email"
+                        placeholder="邮箱地址"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                        className="input mb-2"
+                        type="password"
+                        placeholder="密码"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div>
                     <button
                         onClick={(e) => {
                             e.preventDefault()
-                            handleLogin(email)
+                            if (type === 'login') {
+                                handleLogin(email)
+                            }
+                            if (type === 'register') {
+                                handleResiger(email)
+                            }
                         }}
                             className="button is-primary is-fullwidth"
                         disabled={loading}
                     >
-                        <span>{loading ? 'Loading' : '发送邮件地址'}</span>
+                        <span>{loading ? 'Loading' : NameMap[type]}</span>
                     </button>
+                </div>
+                <div>
+                    {
+                        type === 'login' && <Link href="/register" ><a className='tag is-link is-light'>去注册</a></Link>
+                    }
+                    {
+                        type === 'register' && <Link href="/login" ><a className='tag is-link is-light'>去登录</a></Link>
+                    }
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import Auth from '../components/Auth'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
 
-export default function Login() {
+export default function Register() {
     const router = useRouter()
     const [session, setSession] = useState(supabase.auth.session())
 
@@ -19,7 +19,7 @@ export default function Login() {
 
     return (
         <Layout>
-            {!session && <Auth type="login" /> }
+            {!session && <Auth type="register" /> }
         </Layout>
     )
 }
