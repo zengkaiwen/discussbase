@@ -27,7 +27,7 @@ export default function Auth() {
     return (
         <div className="columns">
             <div className="column is-half is-offset-one-quarter">
-            <h3 className='title'>加入论坛</h3>
+            <h3 className='title'>加入我们</h3>
             {/* <div className='mb-4'>
                 <p className="is-size-5 mb-1">Social Login</p>
                 <button className='button is-fullwidth is-info mb-1' onClick={() => signInWithSocial('twitter')}>Sign in with Twitter</button>

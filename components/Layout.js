@@ -61,9 +61,8 @@ export default function Layout({ children }) {
                     <div id='navbarTarget' className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
                         <div className="navbar-end">
                             <Link href="/posts">
-                                <a className={'navbar-item'}>论坛</a>
+                                <a className={'navbar-item'}>列表</a>
                             </Link>
-
 
                             {session
                                 ? <>
