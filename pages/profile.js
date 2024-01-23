@@ -13,7 +13,9 @@ export default function Profile() {
 
     useEffect(() => {
         setUser(supabase.auth.user())
-        getProfile() 
+
+        // console.log(supabase.auth.user())
+        getProfile()
     }, [])
 
 
