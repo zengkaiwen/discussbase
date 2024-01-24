@@ -61,8 +61,8 @@ export default function Profile() {
                 alert('昵称必填')
                 return
             }
-            if (username.trim().length < 1 || username.trim().length > 16) {
-                alert('昵称不能少于1个字或多于16个字')
+            if (username.trim().length < 2 || username.trim().length > 32) {
+                alert('昵称不能少于2个字或多于32个字')
                 return
             }
             // var expr = /^[a-zA-Z0-9_]{4,12}$/;

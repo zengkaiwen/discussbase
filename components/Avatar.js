@@ -31,7 +31,7 @@ export default function Avatar({username, avatar_url, size=64}) {
             { avatarUrl
                 ? <Image unoptimized="false" className='is-rounded' alt="Avatar" width={size} height={size} src={avatarUrl} />
                 : <Image className='is-rounded' alt="Avatar" width={size} height={size} 
-                            src={'https://ui-avatars.com/api/?background=random&length==&name='+username} />
+                            src={'https://ui-avatars.com/api/?background=random&length=2&name='+username} />
             }
         </figure>
         </>
